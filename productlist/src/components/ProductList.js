@@ -14,8 +14,8 @@ class ProductList extends Component{
         //console.log(event.target.taskTitle.value);
         const data = event.target,
         newProduct = {
-            product_name: data.product_name.value,
-            price: data.price.value
+            product_name: data.product_name.value
+           
         }
         //console.log(newTodo);
         // updating the array but not re-rendering
@@ -39,16 +39,13 @@ class ProductList extends Component{
             <>
             <Form onSubmit={this.addProduct}>
                 <Form.Group controlId="formBasicProductName">
-                    <Form.Label>Product : </Form.Label>
-                    <Form.Control type="text" placeholder="Enter Product Name" name="product_name"/>
-                </Form.Group>
-                <Form.Group controlId="formBasicPrice">
-                    <Form.Label>Price : </Form.Label>
-                    <Form.Control type="number" placeholder="Enter the Price" name="price"/>
+                    <Form.Label>Enter the data : </Form.Label>
+                    <Form.Control type="text" placeholder="Enter the string" name="product_name" onChange={this.changeProduct}/>
                 </Form.Group>
                 
+                
                 <Button type="submit" className="btn btn-success">
-                    Add Product
+                    Submit
                 </Button>
             </Form>
 
@@ -57,7 +54,7 @@ class ProductList extends Component{
                     this.state.productList.map((product, index)=> {
                         return(
                             <ListGroup.Item key={index} variant="success">
-                                 {product.product_name} , Price: $ {product.price}
+                                 {product.product_name}
                                  <Button type="button" variant="danger" onClick={this.deleteProduct} value={index}>
                                      Delete
                                  </Button>
